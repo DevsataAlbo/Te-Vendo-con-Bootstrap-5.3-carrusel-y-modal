@@ -9,7 +9,7 @@ Mejora del marketplace Te Vendo agregando carousel de imágenes en hero section,
 git clone https://github.com/DevsataAlbo/Te-Vendo-con-Bootstrap-5.3-carrusel-y-modal.git
 
 # Navegar al directorio
-cd Te-Vendo-Bootstrap-5.3
+cd Te-Vendo-Bootstrap-5.3-carrusel-y-modal
 
 # Abrir index.html en el navegador
 # Doble click en el archivo o arrastrar al navegador
