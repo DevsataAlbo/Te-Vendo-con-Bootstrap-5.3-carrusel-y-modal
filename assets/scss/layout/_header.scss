@@ -1,0 +1,95 @@
+// ===== HEADER LAYOUT =====
+
+.header {
+  background: $primary;
+  box-shadow: $box-shadow;
+  position: sticky;
+  top: 0;
+  z-index: $zindex-navbar;
+  width: 100%;
+  
+  // Para compatibilidad con el diseño actual
+  // Este será reemplazado por el navbar de Bootstrap
+  &__container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 70px;
+  }
+  
+  &__logo {
+    font-size: $navbar-brand-font-size;
+    font-weight: $font-weight-bold;
+    color: white;
+    
+    &:hover {
+      color: $gray-100;
+      transition: $transition-base;
+    }
+  }
+  
+  &__nav {
+    display: flex;
+    gap: 1.5rem;
+    
+    @include media-breakpoint-down(md) {
+      display: none; // Se manejará con el collapse de Bootstrap
+    }
+  }
+  
+  &__link {
+    color: white;
+    font-weight: 500;
+    transition: $transition-base;
+    padding: 0.5rem 0.75rem;
+    border-radius: $border-radius;
+    
+    &:hover {
+      background-color: rgba(white, 0.2);
+    }
+    
+    &--active {
+      background-color: rgba(white, 0.3);
+      font-weight: $font-weight-bold;
+    }
+  }
+  
+  &__actions {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+  }
+  
+  &__user {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: white;
+    padding: 0.5rem 0.75rem;
+    border-radius: $border-radius;
+    transition: $transition-base;
+    cursor: pointer;
+    
+    &:hover {
+      background-color: rgba(white, 0.2);
+    }
+    
+    span {
+      @include media-breakpoint-down(sm) {
+        display: none;
+      }
+    }
+  }
+}
+
+// Animación para el header cuando hace scroll
+.header.scrolled {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  
+  .navbar-brand {
+    transform: scale(0.9);
+  }
+}

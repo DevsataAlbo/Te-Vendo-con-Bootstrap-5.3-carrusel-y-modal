@@ -1,0 +1,219 @@
+// ===== MAIN LAYOUT =====
+
+.main-content {
+  min-height: calc(100vh - 200px);
+  padding-bottom: 2rem;
+}
+
+// Secciones principales
+.section {
+  margin-bottom: 3rem;
+  
+  &__title {
+    text-align: center;
+    margin-bottom: 2rem;
+    color: $dark;
+    font-weight: $font-weight-bold;
+    
+    &--left {
+      text-align: left;
+    }
+  }
+  
+  &__subtitle {
+    text-align: center;
+    color: $gray-600;
+    margin-bottom: 2rem;
+    font-size: 1.125rem;
+    
+    &--left {
+      text-align: left;
+    }
+  }
+}
+
+// Featured products section
+.featured-products {
+  @extend .section;
+  
+  &__title {
+    @extend .section__title;
+  }
+}
+
+// Categories section con mejoras
+.categories-section {
+  @extend .section;
+  background: rgba($gray-100, 0.5);
+  padding: 3rem 0;
+  border-radius: $border-radius-lg;
+  
+  .categories__grid {
+    @include responsive-grid(1, 2, 4, 1.5rem);
+    
+    @include media-breakpoint-down(sm) {
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  .categories__item {
+    background: white;
+    border: 1px solid $border-color;
+    border-radius: $border-radius-lg;
+    @include card-hover-effect();
+    padding: 2rem 1.5rem;
+    text-align: center;
+    transition: $transition-base;
+    
+    &:hover {
+      border-color: $primary;
+      
+      .categories__icon {
+        color: $primary;
+        transform: scale(1.1);
+      }
+    }
+  }
+  
+  .categories__icon {
+    font-size: 3rem;
+    color: $gray-600;
+    margin-bottom: 1rem;
+    transition: $transition-base;
+  }
+  
+  .categories__name {
+    font-weight: $font-weight-bold;
+    margin-bottom: 0.5rem;
+    color: $dark;
+  }
+  
+  .categories__count {
+    color: $gray-600;
+    font-size: 0.875rem;
+  }
+}
+
+// Stats section mejorada
+.stats-section {
+  @extend .section;
+  background: $gray-100;
+  padding: 3rem 2rem;
+  border-radius: $border-radius-lg;
+  text-align: center;
+  
+  &__grid {
+    @include responsive-grid(1, 2, 4, 2rem);
+    
+    @include media-breakpoint-down(sm) {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+  }
+  
+  &__item {
+    padding: 1rem;
+    
+    h3 {
+      font-size: 2.5rem;
+      color: $primary;
+      margin-bottom: 0.5rem;
+      font-weight: $font-weight-bold;
+      
+      @include media-breakpoint-down(sm) {
+        font-size: 2rem;
+      }
+    }
+    
+    p {
+      color: $gray-600;
+      margin: 0;
+      font-size: 1rem;
+      font-weight: 500;
+    }
+  }
+}
+
+// Contact section
+.contact-section {
+  @extend .section;
+  
+  .contact-form {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+}
+
+// Breadcrumb personalizado
+.breadcrumb-section {
+  background: rgba($primary, 0.05);
+  padding: 1rem 0;
+  margin-bottom: 2rem;
+  border-radius: $border-radius;
+  
+  .breadcrumb {
+    background: none;
+    margin-bottom: 0;
+    
+    .breadcrumb-item {
+      &.active {
+        color: $primary;
+      }
+      
+      a {
+        color: $gray-600;
+        transition: $transition-base;
+        
+        &:hover {
+          color: $primary;
+          text-decoration: none;
+        }
+      }
+    }
+  }
+}
+
+// Loading states
+.loading-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 200px;
+  
+  .spinner {
+    width: 40px;
+    height: 40px;
+    border: 4px solid $gray-300;
+    border-top: 4px solid $primary;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+}
+
+// Empty states
+.empty-state {
+  text-align: center;
+  padding: 3rem 1rem;
+  color: $gray-600;
+  
+  &__icon {
+    font-size: 4rem;
+    color: $gray-400;
+    margin-bottom: 1rem;
+  }
+  
+  &__title {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    color: $gray-700;
+  }
+  
+  &__description {
+    margin-bottom: 1.5rem;
+  }
+}

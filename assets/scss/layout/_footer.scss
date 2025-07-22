@@ -1,0 +1,159 @@
+// ===== FOOTER LAYOUT =====
+
+.footer {
+  background: $dark;
+  color: white;
+  min-height: 100px;
+  padding: 2rem 0 1rem;
+  margin-top: 3rem;
+  width: 100%;
+  
+  &__content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 2rem;
+    margin-bottom: 1.5rem;
+    
+    @include media-breakpoint-down(md) {
+      flex-direction: column;
+      text-align: center;
+    }
+  }
+  
+  &__info {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    flex: 1;
+    
+    @include media-breakpoint-down(md) {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+      text-align: center;
+    }
+  }
+  
+  &__section {
+    h3 {
+      color: $primary;
+      margin-bottom: 1rem;
+      font-size: 1.125rem;
+      font-weight: $font-weight-bold;
+    }
+    
+    p {
+      color: rgba(white, 0.8);
+      margin-bottom: 0.5rem;
+      line-height: 1.5;
+      font-size: 0.9rem;
+    }
+    
+    a {
+      color: rgba(white, 0.8);
+      transition: $transition-base;
+      
+      &:hover {
+        color: $primary;
+        text-decoration: none;
+      }
+    }
+  }
+  
+  &__social-section {
+    flex-shrink: 0;
+    text-align: right;
+    
+    @include media-breakpoint-down(md) {
+      text-align: center;
+    }
+    
+    h3 {
+      color: $primary;
+      margin-bottom: 1rem;
+      font-size: 1.125rem;
+      font-weight: $font-weight-bold;
+    }
+  }
+  
+  &__social {
+    display: flex;
+    gap: 1rem;
+    justify-content: flex-end;
+    
+    @include media-breakpoint-down(md) {
+      justify-content: center;
+    }
+  }
+  
+  &__social-link {
+    width: 40px;
+    height: 40px;
+    background: rgba(white, 0.1);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    transition: $transition-base;
+    font-size: 1.1rem;
+    
+    &:hover {
+      background: $primary;
+      transform: translateY(-2px);
+      color: white;
+    }
+    
+    // Social media specific colors
+    &--facebook:hover {
+      background: #3b5998;
+    }
+    
+    &--twitter:hover {
+      background: #1da1f2;
+    }
+    
+    &--instagram:hover {
+      background: #e4405f;
+    }
+    
+    &--linkedin:hover {
+      background: #0077b5;
+    }
+  }
+  
+  &__bottom {
+    text-align: center;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(white, 0.2);
+    color: rgba(white, 0.6);
+    font-size: 0.875rem;
+    
+    p {
+      margin: 0;
+    }
+  }
+}
+
+// Newsletter section (si se agrega)
+.footer-newsletter {
+  background: #2c3034; // En lugar de lighten($dark, 5%)
+  padding: 2rem 0;
+  
+  .form-control {
+    background: rgba(white, 0.1);
+    border: 1px solid rgba(white, 0.3);
+    color: white;
+    
+    &::placeholder {
+      color: rgba(white, 0.7);
+    }
+    
+    &:focus {
+      background: rgba(white, 0.15);
+      border-color: $primary;
+      color: white;
+      box-shadow: 0 0 0 0.2rem rgba($primary, 0.25);
+    }
+  }
+}

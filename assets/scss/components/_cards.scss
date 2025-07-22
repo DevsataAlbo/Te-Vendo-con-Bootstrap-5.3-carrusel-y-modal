@@ -1,0 +1,128 @@
+// ===== PRODUCT CARDS =====
+
+.product-card {
+  background: white;
+  border: $card-border-width solid $card-border-color;
+  border-radius: $card-border-radius;
+  @include card-hover-effect();
+  padding: $card-spacer-y $card-spacer-x;
+  margin-bottom: 1.5rem;
+  min-width: 250px;
+  
+  &__image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: $border-radius;
+    margin-bottom: 1rem;
+    border: 1px solid $gray-200;
+  }
+  
+  &__title {
+    font-size: 1.125rem;
+    font-weight: $font-weight-bold;
+    margin-bottom: 0.5rem;
+    @include text-truncate();
+    
+    a {
+      color: $dark;
+      
+      &:hover {
+        color: $primary;
+      }
+    }
+  }
+  
+  &__description {
+    color: $gray-600;
+    font-size: 0.875rem;
+    margin-bottom: 1rem;
+    line-height: 1.4;
+  }
+  
+  &__price {
+    font-size: 1.25rem;
+    font-weight: $font-weight-bold;
+    color: $primary;
+    margin-bottom: 1rem;
+  }
+  
+  &__footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.5rem;
+    
+    @include media-breakpoint-down(sm) {
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+  }
+  
+  // Variaciones de la card
+  &--featured {
+    border: 2px solid $warning;
+    position: relative;
+    
+    &::before {
+      content: "Destacado";
+      position: absolute;
+      top: -10px;
+      right: 1rem;
+      background: $warning;
+      color: white;
+      padding: 0.25rem 0.5rem;
+      border-radius: $border-radius;
+      font-size: 0.75rem;
+      font-weight: $font-weight-bold;
+    }
+  }
+  
+  &--sold {
+    opacity: 0.6;
+    position: relative;
+    
+    &::after {
+      content: "VENDIDO";
+      @include center-element();
+      background: rgba($primary, 0.9);
+      color: white;
+      padding: 0.5rem 1rem;
+      border-radius: $border-radius;
+      font-weight: $font-weight-bold;
+    }
+    
+    &:hover {
+      box-shadow: $box-shadow;
+      transform: none;
+    }
+  }
+}
+
+// ===== BADGES =====
+.badge {
+  display: inline-block;
+  padding: 0.25rem 0.5rem;
+  font-size: 0.75rem;
+  font-weight: $font-weight-bold;
+  border-radius: $border-radius;
+  border: 1px solid transparent;
+  
+  &--primary {
+    background: $primary;
+    color: white;
+    border-color: $primary;
+  }
+  
+  &--success {
+    background: $success;
+    color: white;
+    border-color: $success;
+  }
+  
+  &--warning {
+    background: $warning;
+    color: white;
+    border-color: $warning;
+  }
+}

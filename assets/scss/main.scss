@@ -1,0 +1,346 @@
+// ===== ARCHIVO PRINCIPAL SASS =====
+
+// 1. Abstracts (variables y mixins)
+@import "abstracts/variables";
+@import "abstracts/mixins";
+
+// 2. Bootstrap 5.3 se carga via CDN en HTML
+// No necesitamos importar archivos locales
+
+// 3. Layout
+@import "layout/header";
+@import "layout/main";
+@import "layout/footer";
+
+// 4. Components
+@import "components/navbar";
+@import "components/buttons";
+@import "components/cards";
+@import "components/forms";
+@import "components/carousel"; // ← NUEVO COMPONENTE AGREGADO
+
+// ===== ESTILOS BASE Y RESET =====
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: $font-size-base;
+}
+
+body {
+  font-family: $font-family-sans-serif;
+  line-height: $line-height-base;
+  color: $dark;
+  background-color: $light;
+  margin: 0;
+  padding: 0;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: $transition-base;
+}
+
+// ===== WRAPPER PRINCIPAL (80% con modelo de cajas) =====
+.main-wrapper {
+  @include main-wrapper();
+}
+
+// ===== HERO SECTION CON CAROUSEL =====
+.hero {
+  @include gradient-background($primary, $te-vendo-red-dark);
+  color: white;
+  padding: 0;
+  margin-bottom: 2rem;
+  border-radius: $border-radius-lg;
+  overflow: hidden;
+  position: relative;
+  
+  .carousel-item {
+    padding: 4rem 2rem;
+    min-height: 450px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    
+    @include media-breakpoint-down(md) {
+      padding: 3rem 1rem;
+      min-height: 350px;
+    }
+    
+    @include media-breakpoint-down(sm) {
+      padding: 2rem 1rem;
+      min-height: 300px;
+    }
+  }
+  
+  .hero-content {
+    text-align: center;
+    max-width: 800px;
+    width: 100%;
+    z-index: 2;
+    position: relative;
+  }
+  
+  &__title {
+    font-size: $h1-font-size;
+    margin-bottom: 1rem;
+    font-weight: $font-weight-bold;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    
+    @include media-breakpoint-down(md) {
+      font-size: 2rem;
+    }
+    
+    @include media-breakpoint-down(sm) {
+      font-size: 1.75rem;
+    }
+  }
+  
+  &__subtitle {
+    font-size: 1.25rem;
+    opacity: 0.95;
+    margin-bottom: 2rem;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+    
+    @include media-breakpoint-down(md) {
+      font-size: 1.125rem;
+    }
+    
+    @include media-breakpoint-down(sm) {
+      font-size: 1rem;
+      margin-bottom: 1.5rem;
+    }
+  }
+  
+  &__cta {
+    @include button-hover-effect(white, $gray-100);
+    color: $primary;
+    border: 2px solid white;
+    padding: 1rem 2rem;
+    border-radius: $btn-border-radius;
+    font-size: 1.125rem;
+    font-weight: $font-weight-bold;
+    display: inline-block;
+    text-decoration: none;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    
+    @include media-breakpoint-down(sm) {
+      padding: 0.75rem 1.5rem;
+      font-size: 1rem;
+    }
+    
+    &:hover {
+      color: $primary;
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+      text-decoration: none;
+    }
+  }
+  
+  // Controles del carousel
+  .carousel-control-prev,
+  .carousel-control-next {
+    width: 5%;
+    z-index: 3;
+    
+    @include media-breakpoint-down(sm) {
+      width: 8%;
+    }
+    
+    &:hover {
+      .carousel-control-prev-icon,
+      .carousel-control-next-icon {
+        transform: scale(1.1);
+      }
+    }
+  }
+  
+  .carousel-control-prev-icon,
+  .carousel-control-next-icon {
+    transition: $transition-base;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.5));
+    width: 2rem;
+    height: 2rem;
+    
+    @include media-breakpoint-down(sm) {
+      width: 1.5rem;
+      height: 1.5rem;
+    }
+  }
+  
+  // Indicadores del carousel
+  .carousel-indicators {
+    margin-bottom: 2rem;
+    z-index: 3;
+    
+    @include media-breakpoint-down(sm) {
+      margin-bottom: 1rem;
+    }
+    
+    [data-bs-target] {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      border: 2px solid white;
+      opacity: 0.6;
+      transition: $transition-base;
+      
+      &.active {
+        opacity: 1;
+        transform: scale(1.2);
+      }
+      
+      &:hover {
+        opacity: 0.8;
+        transform: scale(1.1);
+      }
+    }
+  }
+}
+
+// ===== GRID DE PRODUCTOS =====
+.products-grid {
+  @include responsive-grid(1, 2, 3, 1.5rem);
+  
+  @include media-breakpoint-down(sm) {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+}
+
+// ===== SEARCH SECTION =====
+.search {
+  background: white;
+  padding: 1.5rem;
+  border: 1px solid $border-color;
+  border-radius: $border-radius-lg;
+  @include card-hover-effect();
+  margin-bottom: 2rem;
+  
+  &__form {
+    .form-control,
+    .form-select {
+      &:focus {
+        border-color: $primary;
+        box-shadow: 0 0 0 0.2rem rgba($primary, 0.25);
+      }
+    }
+    
+    .btn {
+      @include button-hover-effect($primary, $te-vendo-red-dark, $primary);
+      color: white;
+      border-color: $primary;
+      
+      &:hover {
+        border-color: $te-vendo-red-dark;
+        box-shadow: 0 4px 8px rgba($primary, 0.3);
+      }
+    }
+  }
+}
+
+// ===== FILTERS =====
+.filters {
+  margin-bottom: 1.5rem;
+  
+  .btn {
+    @include button-hover-effect(white, $gray-100);
+    color: $dark;
+    border: 1px solid $border-color;
+    font-size: 0.875rem;
+    
+    &.active {
+      @include button-hover-effect($primary, $te-vendo-red-dark);
+      color: white;
+      border-color: $primary;
+    }
+    
+    @include media-breakpoint-down(sm) {
+      font-size: 0.75rem;
+      padding: 0.5rem 0.75rem;
+    }
+  }
+}
+
+// ===== CATEGORIES SECTION =====
+.categories {
+  margin-bottom: 2rem;
+  
+  &__title {
+    text-align: center;
+    margin-bottom: 1.5rem;
+  }
+  
+  &__grid {
+    @include responsive-grid(1, 2, 4, 1.5rem);
+  }
+  
+  &__item {
+    background: white;
+    border: 1px solid $border-color;
+    border-radius: $border-radius-lg;
+    @include card-hover-effect();
+    padding: 1.5rem;
+    text-align: center;
+    
+    &:hover .categories__icon {
+      transform: scale(1.1);
+      color: $primary;
+    }
+  }
+  
+  &__icon {
+    font-size: 3rem;
+    color: $gray-600;
+    margin-bottom: 1rem;
+    transition: $transition-base;
+  }
+  
+  &__name {
+    font-weight: $font-weight-bold;
+    margin-bottom: 0.5rem;
+  }
+  
+  &__count {
+    color: $gray-600;
+    font-size: 0.875rem;
+  }
+}
+
+// ===== STATS SECTION =====
+.stats {
+  background: $gray-100;
+  padding: 2rem;
+  text-align: center;
+  border: 1px solid $border-color;
+  border-radius: $border-radius-lg;
+  margin-bottom: 2rem;
+  
+  &__grid {
+    @include responsive-grid(1, 2, 4, 1.5rem);
+  }
+  
+  &__item {
+    h3 {
+      font-size: 2.5rem;
+      color: $primary;
+      margin-bottom: 0.5rem;
+    }
+    
+    p {
+      color: $gray-600;
+      margin: 0;
+    }
+  }
+}

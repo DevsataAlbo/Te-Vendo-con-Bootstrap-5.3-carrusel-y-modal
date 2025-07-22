@@ -1,0 +1,38 @@
+// ===== CAROUSEL DE PRODUCTOS =====
+
+.product-carousel {
+  margin-bottom: 3rem;
+  
+  // Ocultar en móviles
+  @include media-breakpoint-down(sm) {
+    display: none !important;
+  }
+}
+
+// Imágenes del carousel
+.img-carrusel {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: $border-radius;
+}
+
+// Controles de navegación
+.fondo-puntos {
+  text-align: center;
+  margin-top: 15px;
+}
+
+.puntito {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: none;
+  background-color: $gray-400;
+  margin: 0 5px;
+  cursor: pointer;
+  
+  &.active {
+    background-color: $primary;
+  }
+}

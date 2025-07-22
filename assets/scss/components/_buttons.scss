@@ -1,0 +1,131 @@
+// ===== CUSTOM BUTTONS =====
+// Personalizaciones para los botones de Bootstrap 5.3
+
+// Override de botones Bootstrap para mantener el estilo Te Vendo
+.btn {
+  border-radius: $btn-border-radius;
+  transition: $btn-transition;
+  font-weight: 500;
+  
+  // Efecto hover general
+  &:hover {
+    transform: translateY(-2px);
+  }
+  
+  &:active {
+    transform: translateY(0);
+  }
+  
+  // Focus accesible
+  @include focus-outline();
+  
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    
+    &:hover {
+      transform: none;
+    }
+  }
+}
+
+// Botón primario personalizado
+.btn-primary {
+  @include button-hover-effect($primary, $te-vendo-red-dark, $primary);
+  color: white;
+  border-color: $primary;
+  
+  &:hover {
+    border-color: $te-vendo-red-dark;
+    box-shadow: 0 4px 8px rgba($primary, 0.3);
+  }
+  
+  &:focus {
+    box-shadow: 0 0 0 0.2rem rgba($primary, 0.25);
+  }
+}
+
+// Botón secundario personalizado  
+.btn-secondary {
+  @include button-hover-effect($secondary, $te-vendo-blue-dark, $secondary);
+  color: white;
+  border-color: $secondary;
+  
+  &:hover {
+    border-color: $te-vendo-blue-dark;
+    box-shadow: 0 4px 8px rgba($secondary, 0.3);
+  }
+  
+  &:focus {
+    box-shadow: 0 0 0 0.2rem rgba($secondary, 0.25);
+  }
+}
+
+// Botón success personalizado
+.btn-success {
+  @include button-hover-effect($success, #229954, $success); // En lugar de darken()
+  color: white;
+  border-color: $success;
+  
+  &:hover {
+    border-color: #229954; // En lugar de darken()
+    box-shadow: 0 4px 8px rgba($success, 0.3);
+  }
+}
+
+// Botón outline personalizado
+.btn-outline-primary {
+  background-color: transparent;
+  border: 2px solid $primary;
+  color: $primary;
+  
+  &:hover {
+    background-color: $primary;
+    color: white;
+    border-color: $primary;
+    transform: translateY(-2px);
+  }
+  
+  &:focus {
+    box-shadow: 0 0 0 0.2rem rgba($primary, 0.25);
+  }
+}
+
+.btn-outline-secondary {
+  background-color: transparent;
+  border: 2px solid $secondary;
+  color: $secondary;
+  
+  &:hover {
+    background-color: $secondary;
+    color: white;
+    border-color: $secondary;
+    transform: translateY(-2px);
+  }
+}
+
+// Tamaños personalizados
+.btn-sm {
+  padding: 0.25rem 0.5rem;
+  font-size: 0.875rem;
+  border-radius: calc(#{$btn-border-radius} * 0.8);
+}
+
+.btn-lg {
+  padding: 1rem 1.5rem;
+  font-size: 1.125rem;
+  border-radius: calc(#{$btn-border-radius} * 1.2);
+}
+
+// Botón de bloque (ancho completo)
+.btn-block {
+  width: 100%;
+  display: block;
+}
+
+// Grupos de botones
+.btn-group {
+  .btn:not(:last-child) {
+    margin-right: 0.25rem;
+  }
+}

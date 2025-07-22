@@ -1,0 +1,145 @@
+// ===== CUSTOM NAVBAR =====
+// Personalizaciones para navbar de Bootstrap 5.3
+
+.navbar {
+  background: $primary !important;
+  box-shadow: $box-shadow;
+  padding: $navbar-padding-y $navbar-padding-x;
+  
+  // Brand/Logo
+  .navbar-brand {
+    font-size: $navbar-brand-font-size;
+    font-weight: $font-weight-bold;
+    color: white !important;
+    transition: $transition-base;
+    
+    &:hover {
+      color: $gray-100 !important;
+    }
+  }
+  
+  // Navigation links
+  .navbar-nav {
+    .nav-link {
+      color: white !important;
+      font-weight: 500;
+      transition: $transition-base;
+      padding: 0.5rem 0.75rem;
+      border-radius: $border-radius;
+      margin: 0 0.25rem;
+      
+      &:hover {
+        background-color: rgba(white, 0.2);
+        color: white !important;
+      }
+      
+      &.active {
+        background-color: rgba(white, 0.3);
+        font-weight: $font-weight-bold;
+      }
+    }
+  }
+  
+  // Toggler para móvil
+  .navbar-toggler {
+    border-color: rgba(white, 0.3);
+    
+    &:focus {
+      box-shadow: 0 0 0 0.25rem rgba(white, 0.25);
+    }
+    
+    .navbar-toggler-icon {
+      background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 0.85%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+    }
+  }
+  
+  // Collapse menu para móvil
+  .navbar-collapse {
+    @include media-breakpoint-down(lg) {
+      background-color: rgba($primary, 0.95);
+      margin-top: 1rem;
+      padding: 1rem;
+      border-radius: $border-radius;
+      backdrop-filter: blur(10px);
+    }
+  }
+  
+  // User actions section
+  .navbar-actions {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    
+    .navbar-user {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: white;
+      padding: 0.5rem 0.75rem;
+      border-radius: $border-radius;
+      transition: $transition-base;
+      cursor: pointer;
+      
+      &:hover {
+        background-color: rgba(white, 0.2);
+      }
+      
+      i {
+        font-size: 1.1rem;
+      }
+      
+      span {
+        @include media-breakpoint-down(sm) {
+          display: none;
+        }
+      }
+    }
+  }
+}
+
+// Navbar fijo
+.navbar.fixed-top {
+  position: sticky;
+  top: 0;
+  z-index: $zindex-navbar;
+}
+
+// Dropdown en navbar
+.navbar .dropdown-menu {
+  border: 0;
+  box-shadow: $box-shadow-lg;
+  border-radius: $border-radius;
+  
+  .dropdown-item {
+    transition: $transition-base;
+    
+    &:hover {
+      background-color: rgba($primary, 0.1);
+      color: $primary;
+    }
+  }
+}
+
+// Responsive adjustments
+@include media-breakpoint-down(lg) {
+  .navbar {
+    .navbar-nav {
+      margin-top: 1rem;
+      
+      .nav-link {
+        padding: 0.75rem 1rem;
+        margin: 0.25rem 0;
+        
+        &:hover {
+          background-color: rgba(white, 0.3);
+        }
+      }
+    }
+    
+    .navbar-actions {
+      margin-top: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+  }
+}
